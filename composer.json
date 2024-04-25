@@ -1,0 +1,18 @@
+{
+	"name": "ybsisgood/module-user-management",
+	"description": "ybsisgood module, and some modifications",
+	"autoload": {
+		"psr-4": {
+			"ybsisgood\\modules\\UserManagement\\": ""
+		}
+	},
+	"require": {
+		"ybsisgood/components": "*",
+		"ybsisgood/bootstrap-switch": "*",
+		"ikimea/browser": "1.12.0",
+		"ybsisgood/date-range-picker": "*",
+		"ybsisgood/helpers": "*",
+		"ybsisgood/grid-bulk-actions": "*",
+		"ybsisgood/grid-page-size": "*"
+	}
+}
