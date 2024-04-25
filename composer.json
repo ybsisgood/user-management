@@ -7,12 +7,12 @@
 		}
 	},
 	"require": {
-		"ybsisgood/components": "dev-main",
-		"ybsisgood/bootstrap-switch": "dev-main",
+		"ybsisgood/components": "^1.0.0",
+		"ybsisgood/bootstrap-switch": "^1.0.0",
 		"ikimea/browser": "1.12.0",
-		"ybsisgood/date-range-picker": "dev-main",
-		"ybsisgood/helpers": "dev-main",
-		"ybsisgood/grid-bulk-actions": "dev-main",
-		"ybsisgood/grid-page-size": "dev-main"
+		"ybsisgood/date-range-picker": "^1.0.0",
+		"ybsisgood/helpers": "^1.0.0",
+		"ybsisgood/grid-bulk-actions": "^1.0.0",
+		"ybsisgood/grid-page-size": "^1.0.0"
 	}
 }
