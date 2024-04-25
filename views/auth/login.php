@@ -47,7 +47,7 @@ $baseUrl = Url::base();
                             </a>
                         </div>
                         <div class="p-2">
-                            <form class="form-horizontal" action="<?php echo Url::toRoute(['site/login']); ?>" method="post">
+                            <form class="form-horizontal" action="<?php echo Url::toRoute(['auth/login']); ?>" method="post">
                                 <input type="hidden" name="_csrf" value="<?= Yii::$app->request->getCsrfToken() ?>" />
                                 <div class="mb-3 <?= $model->hasErrors('username') ? 'has-error' : ''; ?>">
                                     <label for="loginform-username" class="form-label">Username</label>
