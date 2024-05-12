@@ -6,6 +6,8 @@
 $this->title = 'Login';
 
 use yii\helpers\Url;
+use kartik\form\ActiveForm;
+use yii\helpers\Html;
 
 $baseUrl = Url::base();
 ?>
@@ -47,34 +49,23 @@ $baseUrl = Url::base();
                             </a>
                         </div>
                         <div class="p-2">
-                            <form class="form-horizontal" action="<?php echo Url::toRoute(['/user-management/auth/login']); ?>" method="post">
-                                <input type="hidden" name="_csrf" value="<?= Yii::$app->request->getCsrfToken() ?>" />
-                                <div class="mb-3 <?= $model->hasErrors('username') ? 'has-error' : ''; ?>">
-                                    <label for="loginform-username" class="form-label">Username</label>
-                                    <input type="text" class="form-control" id="loginform-username" name="LoginForm[username]" placeholder="Enter username">
-                                    <span class="text-danger"><?= $model->getFirstError('username') ? $model->getFirstError('username') : ''; ?></span>
-                                </div>
-        
-                                <div class="mb-3 <?= $model->hasErrors('password') ? 'has-error' : ''; ?>">
-                                    <label class="form-label">Password</label>
-                                    <div class="input-group auth-pass-inputgroup">
-                                        <input type="password" class="form-control" placeholder="Enter password" name="LoginForm[password]" aria-label="Password" aria-describedby="password-addon">
-                                        <button class="btn btn-light " type="button" id="password-addon"><i class="mdi mdi-eye-outline"></i></button>
-                                        
-                                    </div>
-                                    <span class="text-danger"><?= $model->getFirstError('password') ? $model->getFirstError('password') : ''; ?></span>
-                                </div>
+                            <?php 
+                                $form = ActiveForm::begin([
+                                    'id' => 'login-form-vertical', 
+                                    'type' => ActiveForm::TYPE_FLOATING
+                                ]); 
+                            ?>
+                                <?= $form->field($model, 'username') ?>
 
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="loginform-rememberme" name="LoginForm[rememberMe]">
-                                    <label class="form-check-label" for="loginform-rememberme">
-                                        Remember me
-                                    </label>
-                                </div>
+                                <?= $form->field($model, 'password')->passwordInput() ?>
+
+                                <?= $form->field($model, 'rememberMe')->checkbox(['custom' => true]) ?>
                                 
                                 <div class="mt-3 d-grid">
-                                    <button class="btn btn-primary waves-effect waves-light" type="submit">Log In</button>
+                                    <?= Html::submitButton('Login', ['class' => 'btn btn-primary waves-effect waves-light']) ?>
                                 </div>
+
+                            <?php ActiveForm::end(); ?>
     
                                 <!-- <div class="mt-4 text-center">
                                     <h5 class="font-size-14 mb-3">Sign in with</h5>
@@ -101,7 +92,6 @@ $baseUrl = Url::base();
                                 <!-- <div class="mt-4 text-center">
                                     <a href="#" class="text-muted"><i class="mdi mdi-lock me-1"></i> Forgot your password?</a>
                                 </div> -->
-                            </form>
                         </div>
     
                     </div>
