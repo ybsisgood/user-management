@@ -99,7 +99,7 @@ $baseUrl = Url::base();
                 <div class="mt-5 text-center">
                     
                     <div>
-                        <p><?= Yii::$app->params['yearCopyright'] . ' © ' . Yii::$app->params['companyName'];?>. Crafted with <i class="mdi mdi-coffee text-danger"></i> by Juara Kedua</p>
+                        <p><?= Yii::$app->params['yearCopyright'] . ' © ' . Yii::$app->params['companyName'];?>. Crafted with <i class="mdi mdi-coffee text-danger"></i></p>
                     </div>
                 </div>
 
