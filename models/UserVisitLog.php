@@ -90,7 +90,7 @@ class UserVisitLog extends \ybsisgood\components\BaseActiveRecord
 			[['token', 'ip', 'language', 'visit_time'], 'required'],
 			[['user_id', 'visit_time'], 'integer'],
 			[['token', 'user_agent'], 'string', 'max' => 255],
-			[['ip'], 'string', 'max' => 15],
+			[['ip'], 'string', 'max' => 45],
 			[['os'], 'string', 'max' => 20],
 			[['browser'], 'string', 'max' => 30],
 			[['language'], 'string', 'max' => 2]

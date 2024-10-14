@@ -10,6 +10,37 @@ use kartik\form\ActiveForm;
 use yii\helpers\Html;
 
 $baseUrl = Url::base();
+
+if(isset(Yii::$app->params['themesFolderImage'])) {
+    $themeFolderImage = Yii::$app->params['themesFolderImage'];
+} else {
+    $themeFolderImage = 'themes/skote/assets/images';
+}
+
+if(isset(Yii::$app->params['themeProfileImage'])) {
+    $themeProfileImage = Yii::$app->params['themeProfileImage'];
+} else {
+    $themeProfileImage = 'profile-img.png';
+}
+
+if(isset(Yii::$app->params['author'])) {
+    $author = Yii::$app->params['author'];
+} else {
+    $author = 'Juara Kedua';
+}
+
+if(isset(Yii::$app->params['themeLogoLoginLight'])) {
+    $themeLogoLoginLight = Yii::$app->params['themeLogoLoginLight'];
+} else {
+    $themeLogoLoginLight = 'logo-light.svg';
+}
+
+if(isset(Yii::$app->params['themeLogoLoginDark'])) {
+    $themeLogoLoginDark = Yii::$app->params['themeLogoLoginDark'];
+} else {
+    $themeLogoLoginDark = 'logo.svg';
+}
+
 ?>
 
 <div class="account-pages my-5 pt-sm-5">
@@ -26,7 +57,7 @@ $baseUrl = Url::base();
                                 </div>
                             </div>
                             <div class="col-5 align-self-end">
-                                <img src="<?= $baseUrl; ?>/themes/skote/assets/images/profile-img.png" alt="" class="img-fluid">
+                                <img src="<?= $baseUrl; ?>/<?= $themeFolderImage; ?>/<?= $themeProfileImage; ?>" alt="" class="img-fluid">
                             </div>
                         </div>
                     </div>
@@ -35,7 +66,7 @@ $baseUrl = Url::base();
                             <a href="javascript:void(0);" onclick="window.location.reload(true);" class="auth-logo-light">
                                 <div class="avatar-md profile-user-wid mb-4">
                                     <span class="avatar-title rounded-circle bg-light">
-                                        <img src="<?= $baseUrl; ?>/themes/skote/assets/images/logo-light.svg" alt="" class="rounded-circle" height="34">
+                                        <img src="<?= $baseUrl; ?>/<?= $themeFolderImage; ?>/<?= $themeLogoLoginLight; ?>" alt="" class="rounded-circle" height="34">
                                     </span>
                                 </div>
                             </a>
@@ -43,7 +74,7 @@ $baseUrl = Url::base();
                             <a href="javascript:void(0);" onclick="window.location.reload(true);" class="auth-logo-dark">
                                 <div class="avatar-md profile-user-wid mb-4">
                                     <span class="avatar-title rounded-circle bg-light">
-                                        <img src="<?= $baseUrl; ?>/themes/skote/assets/images/logo.svg" alt="" class="rounded-circle" height="34">
+                                        <img src="<?= $baseUrl; ?>/<?= $themeFolderImage; ?>/<?= $themeLogoLoginDark; ?>" alt="" class="rounded-circle" height="34">
                                     </span>
                                 </div>
                             </a>
@@ -52,7 +83,8 @@ $baseUrl = Url::base();
                             <?php 
                                 $form = ActiveForm::begin([
                                     'id' => 'login-form-vertical', 
-                                    'type' => ActiveForm::TYPE_FLOATING
+                                    'type' => ActiveForm::TYPE_FLOATING,
+                                    'class' => 'disable-submit-buttons',
                                 ]); 
                             ?>
                                 <?= $form->field($model, 'username') ?>
@@ -62,44 +94,17 @@ $baseUrl = Url::base();
                                 <?= $form->field($model, 'rememberMe')->checkbox(['custom' => true]) ?>
                                 
                                 <div class="mt-3 d-grid">
-                                    <?= Html::submitButton('Login', ['class' => 'btn btn-primary waves-effect waves-light']) ?>
+                                    <?= Html::submitButton('Login', ['class' => 'btn btn-primary waves-effect waves-light', 'data' => ['disabled-text' => 'Please Wait']]) ?>
                                 </div>
 
                             <?php ActiveForm::end(); ?>
-    
-                                <!-- <div class="mt-4 text-center">
-                                    <h5 class="font-size-14 mb-3">Sign in with</h5>
-    
-                                    <ul class="list-inline">
-                                        <li class="list-inline-item">
-                                            <a href="javascript::void()" class="social-list-item bg-primary text-white border-primary">
-                                                <i class="mdi mdi-facebook"></i>
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a href="javascript::void()" class="social-list-item bg-info text-white border-info">
-                                                <i class="mdi mdi-twitter"></i>
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a href="javascript::void()" class="social-list-item bg-danger text-white border-danger">
-                                                <i class="mdi mdi-google"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div> -->
-
-                                <!-- <div class="mt-4 text-center">
-                                    <a href="#" class="text-muted"><i class="mdi mdi-lock me-1"></i> Forgot your password?</a>
-                                </div> -->
                         </div>
     
                     </div>
                 </div>
                 <div class="mt-5 text-center">
-                    
                     <div>
-                        <p><?= Yii::$app->params['yearCopyright'] . ' © ' . Yii::$app->params['companyName'];?>. Crafted with <i class="mdi mdi-coffee text-danger"></i></p>
+                        <p><?= Yii::$app->params['yearCopyright'] . ' © ' . Yii::$app->params['companyName'];?>. Crafted with <i class="mdi mdi-coffee text-danger"></i> by <?= $author; ?></p>
                     </div>
                 </div>
 
